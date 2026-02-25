@@ -1,19 +1,24 @@
+// Verificar si está logueado
+if (localStorage.getItem("adminLogueado") !== "true") {
+  window.location.href = "login.html";
+}
+
 let sistema = new Sistema();
 
 let tabla = document.getElementById("tablaReservas");
 let reservas = sistema.reservas;
 
 if (reservas.length === 0) {
-    tabla.innerHTML = `
+  tabla.innerHTML = `
         <tr>
             <td colspan="6">No hay reservas registradas.</td>
         </tr>
     `;
 } else {
-    tabla.innerHTML = "";
+  tabla.innerHTML = "";
 
-    reservas.forEach(reserva => {
-        let fila = `
+  reservas.forEach((reserva) => {
+    let fila = `
             <tr>
                 <td>${reserva.duenio}</td>
                 <td>${reserva.mascota}</td>
@@ -23,6 +28,13 @@ if (reservas.length === 0) {
                 <td>${reserva.hora}</td>
             </tr>
         `;
-        tabla.innerHTML += fila;
-    });
+    tabla.innerHTML += fila;
+  });
+}
+
+if (typeof module !== "undefined") {
+  module.exports = {
+    funcion_1,
+    funcion_2,
+  };
 }
