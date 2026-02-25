@@ -1,6 +1,7 @@
+
 // Verificar si está logueado
 if (localStorage.getItem("adminLogueado") !== "true") {
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }
 
 let sistema = new Sistema();
@@ -30,11 +31,4 @@ if (reservas.length === 0) {
         `;
     tabla.innerHTML += fila;
   });
-}
-
-if (typeof module !== "undefined") {
-  module.exports = {
-    funcion_1,
-    funcion_2,
-  };
 }
