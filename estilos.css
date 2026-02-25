@@ -392,3 +392,7 @@ button[type="submit"]:hover {
 .cerrar:hover {
     color: #F86F03;
 }
+
+.hidden {
+  display: none;
+}

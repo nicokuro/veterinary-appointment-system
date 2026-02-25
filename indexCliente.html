@@ -72,7 +72,6 @@
         <section id="galeria">
             <h2>Momentos en clínica</h2>
             <div class="galeria-content">
-                <!-- Reemplazá srcs con tus fotos reales -->
                 <img src="imgvet/foto1.jpg" alt="Momento en clínica 1">
                 <img src="imgvet/foto2.jpg" alt="Momento en clínica 2">
                 <img src="imgvet/foto3.jpg" alt="Momento en clínica 3">
@@ -93,7 +92,10 @@
                     <p><strong>Horario:</strong> Lunes a Viernes 9-18 hs</p>
                 </div>
                 <div class="contacto-mapa">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.897603394862!2d-56.180824221472925!3d-34.909019102832545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959f81b7317c36f5%3A0x72e3ba9d629c2011!2sYaro%201130%2C%2011200%20Montevideo%2C%20Departamento%20de%20Montevideo!5e0!3m2!1ses!2suy!4v1771882302690!5m2!1ses!2suy" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.897603394862!2d-56.180824221472925!3d-34.909019102832545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959f81b7317c36f5%3A0x72e3ba9d629c2011!2sYaro%201130%2C%2011200%20Montevideo%2C%20Departamento%20de%20Montevideo!5e0!3m2!1ses!2suy!4v1771882302690!5m2!1ses!2suy"
+                        width="100%" height="450" style="border:0;" allowfullscreen=""
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
         </section>
@@ -107,9 +109,12 @@
                 <a href="#hero">Reservas</a>
             </div>
             <div class="footer-social">
-                <!-- Reemplazá srcs con icons reales -->
-                <a href="https://wa.me/59899123456" target="_blank"><img src="imgvet/whatsapp-icon.png" alt="WhatsApp"></a>
-                <a href="https://instagram.com/huellasvet" target="_blank"><img src="imgvet/instagram-icon.png" alt="Instagram"></a>
+                <a href="https://wa.me/59899123456" target="_blank">
+                    <img src="imgvet/whatsapp-icon.png" alt="WhatsApp">
+                </a>
+                <a href="https://instagram.com/huellasvet" target="_blank">
+                    <img src="imgvet/instagram-icon.png" alt="Instagram">
+                </a>
             </div>
             <p>Huellas®, 2026. Todos los derechos reservados.</p>
         </div>
@@ -120,23 +125,30 @@
         <div class="modal-content">
             <span class="cerrar">&times;</span>
             <h2>Agendá tu reserva</h2>
+
+            <!-- FORMULARIO RESERVA -->
             <form id="reserva-form">
                 <div class="form-group">
                     <label for="nombre-duenio">Nombre del dueño *</label>
                     <input type="text" id="nombre-duenio" name="nombre_duenio" required>
                 </div>
+
                 <div class="form-group">
                     <label for="telefono">Teléfono celular *</label>
-                    <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" title="Ingrese 10 dígitos (ej: 099123456)" required>
+                    <input type="tel" id="telefono" name="telefono"
+                        pattern="[0-9]{9,10}" required>
                 </div>
+
                 <div class="form-group">
                     <label for="email">Correo electrónico *</label>
                     <input type="email" id="email" name="email" required>
                 </div>
+
                 <div class="form-group">
                     <label for="nombre-mascota">Nombre de la mascota *</label>
                     <input type="text" id="nombre-mascota" name="nombre_mascota" required>
                 </div>
+
                 <div class="form-group">
                     <label for="servicio">Servicio *</label>
                     <select id="servicio" name="servicio" required>
@@ -146,21 +158,54 @@
                         <option value="banio">Baño</option>
                     </select>
                 </div>
+
                 <div class="form-group">
                     <label for="profesional">Profesional *</label>
                     <select id="profesional" name="profesional" required>
                         <option value="">Seleccione un profesional</option>
-                        <option value="vet1">Dr. Juan Pérez (Veterinario general)</option>
-                        <option value="vet2">Dra. María López (Especialista en peluquería)</option>
-                        <option value="vet3">Dr. Carlos Ruiz (Groomer y baños)</option>
+                        <option value="vet1">Dr. Juan Pérez</option>
+                        <option value="vet2">Dra. María López</option>
+                        <option value="vet3">Dr. Carlos Ruiz</option>
                     </select>
                 </div>
+
                 <div class="form-group">
-                    <label for="fecha-hora">Fecha y hora (9-18 hs, lunes a viernes) *</label>
-                    <input type="datetime-local" id="fecha-hora" name="fecha_hora" required min="2026-02-25T09:00" max="2026-12-31T18:00" step="3600">
+                    <label for="fecha-hora">Fecha y hora *</label>
+                    <input type="datetime-local" id="fecha-hora"
+                        name="fecha_hora" required>
                 </div>
+
                 <button type="submit">Confirmar reserva</button>
             </form>
+
+            <!-- BOTÓN LOGIN ADMIN -->
+            <button id="btn-mostrar-login" type="button" class="btn-admin">
+                Ingresar como administrador
+            </button>
+
+            <!-- LOGIN ADMIN (OCULTO) -->
+            <div id="admin-login-section" class="hidden">
+                <h3>Ingreso Administrador</h3>
+
+                <div class="form-group">
+                    <label for="admin-usuario">Usuario</label>
+                    <input type="text" id="admin-usuario">
+                </div>
+
+                <div class="form-group">
+                    <label for="admin-password">Contraseña</label>
+                    <input type="password" id="admin-password">
+                </div>
+
+                <button id="btn-login-admin" type="button">
+                    Ingresar
+                </button>
+
+                <button id="btn-volver-reserva" type="button">
+                    Volver a reserva
+                </button>
+            </div>
+
         </div>
     </div>
 
