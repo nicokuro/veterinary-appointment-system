@@ -1,32 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Administrador - Huellas</title>
-</head>
-<body>
-     <h1>Panel de Administrador </h1>
+    <link rel="stylesheet" href="estilos.css" />
+  </head>
 
-    <h2>Listado de Reservas</h2>
+  <body>
+    <header>
+      <nav>
+        <img
+          src="imgvet/logo-huellas-bco 1.png"
+          alt="Logo Huellas"
+          class="logo-huellas"
+        />
 
-    <table border="1">
-        <thead>
-            <tr>
+        <a href="#reservas">Reservas</a>
+        <a href="indexCliente.html#hero">Ir a Vista de Cliente</a>
+
+        <button id="btn-logout">Cerrar sesión</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO (reusa estilos del cliente) -->
+      <section id="hero">
+        <div class="hero-content">
+          <h1>Panel de Administrador</h1>
+          <p>Listado de reservas registradas.</p>
+          <a class="btn-orange" href="#reservas">Ver reservas</a>
+        </div>
+      </section>
+
+      <!-- SECCIÓN RESERVAS -->
+      <section id="reservas">
+        <h2>Listado de reservas</h2>
+
+        <div class="tabla-container">
+          <table>
+            <thead>
+              <tr>
                 <th>Dueño</th>
                 <th>Mascota</th>
                 <th>Servicio</th>
                 <th>Profesional</th>
                 <th>Fecha</th>
                 <th>Hora</th>
-            </tr>
-        </thead>
-        <tbody id="tablaReservas">
-            
-        </tbody>
-    </table>
-    
+              </tr>
+            </thead>
+            <tbody id="tablaReservas"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
     <script src="clases.js"></script>
     <script src="codigo.js"></script>
-</body>
+  </body>
 </html>

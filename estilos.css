@@ -396,3 +396,68 @@ button[type="submit"]:hover {
 .hidden {
   display: none;
 }
+
+/*Agrego para actualizar la vista de la admin*/
+
+/* ADMIN - RESERVAS */
+#reservas {
+  padding: 5rem 8%;
+  background: white;
+  text-align: center;
+}
+
+#reservas h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  color: #F86F03;
+  margin-bottom: 2rem;
+}
+
+.tabla-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: auto; /* responsive ojaldre */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+thead th {
+  text-align: left;
+  padding: 16px;
+  font-weight: 700;
+  border-bottom: 2px solid #eee;
+}
+
+td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover {
+  background: #f8f9fa;
+}
+
+/* Btn logout*/
+#btn-logout {
+  background: #4F7FFF;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#btn-logout:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(79, 127, 255, 0.4);
+}
