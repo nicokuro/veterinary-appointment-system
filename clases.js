@@ -51,11 +51,42 @@ class Sistema {
     return true;
   }
 
-  existeSolape(servicio, fecha, hora) {
-    return this.reservas.some(
-      (r) => r.servicio === servicio && r.fecha === fecha && r.hora === hora
-    );
+    //Helpers para evitar solapes de consultas
+    // Convierte fecha "YYYY-MM-DD" y hora "HH:MM" a Date
+  fechaHoraAdate(fecha, hora) {
+    return new Date(`${fecha}T${hora}:00`);
   }
+
+  // Devuelve inicio y fin (Date) segun duracion
+  obtenerRangoReserva(fecha, hora, duracionMin) {
+    const inicio = this.fechaHoraAdate(fecha, hora);
+    const fin = new Date(inicio.getTime() + duracionMin * 60 * 1000);
+    return { inicio, fin };
+  }
+
+  // Solape de rangos: [aInicio, aFin) con [bInicio, bFin)
+  seSolapan(aInicio, aFin, bInicio, bFin) {
+    return aInicio < bFin && bInicio < aFin;
+  }
+
+  existeSolape(servicio, fecha, hora, duracionMinNueva) {
+  const { inicio: inicioNueva, fin: finNueva } =
+    this.obtenerRangoReserva(fecha, hora, duracionMinNueva);
+
+  return this.reservas.some((r) => {
+    // misma fecha y mismo servicio
+    if (r.fecha !== fecha) return false;
+    if (r.servicio !== servicio) return false;
+
+    const duracionExistente =
+      r.duracionMin ?? this.obtenerDuracionPorServicio(r.servicio);
+
+    const { inicio: inicioExistente, fin: finExistente } =
+      this.obtenerRangoReserva(r.fecha, r.hora, duracionExistente);
+
+    return this.seSolapan(inicioNueva, finNueva, inicioExistente, finExistente);
+  });
+}
 
   agregarNuevaReserva(
     duenio,
@@ -74,7 +105,10 @@ class Sistema {
     if (!this.validarHorario(hora)) {
       throw new Error("Horario inválido. Permitido entre 09:00 y 18:00.");
     }
-    if (this.existeSolape(servicio, fecha, hora)) {
+    //calcular duracion segun servicio
+    let duracionMin = this.obtenerDuracionPorServicio(servicio);
+
+    if (this.existeSolape(servicio, fecha, hora, duracionMin)) {
       throw new Error(
         "Ya existe una reserva para ese servicio en ese horario."
       );
@@ -88,7 +122,8 @@ class Sistema {
       servicio,
       profesional,
       fecha,
-      hora
+      hora,
+      duracionMin
     );
     nuevaReserva.idReserva = this.obtenerIdReserva();
 
@@ -96,6 +131,18 @@ class Sistema {
     this.guardarReservas();
 
     return nuevaReserva;
+  }
+
+  obtenerDuracionPorServicio(servicio)
+  {
+  const s = servicio.toLowerCase();
+
+  if (s.includes("consulta")) return 30;
+  if (s.includes("baño") || s.includes("banio")) return 60;
+  if (s.includes("peluquer")) return 60;
+
+  // fallback si agregan servicios nuevos
+  return 30;
   }
 }
 
@@ -108,7 +155,8 @@ class Reserva {
     servicio,
     profesional,
     fecha,
-    hora
+    hora,
+    duracionMin
   ) {
     this.idReserva = 0; // se setea desde Sistema
     this.duenio = duenio;
@@ -119,6 +167,7 @@ class Reserva {
     this.profesional = profesional;
     this.fecha = fecha; // YYYY-MM-DD
     this.hora = hora; // HH:MM
+    this.duracionMin = duracionMin;
     this.fechaCreacion = new Date().toISOString();
   }
 }

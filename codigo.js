@@ -35,6 +35,7 @@ if (reservas.length === 0) {
         <td>${reserva.profesional}</td>
         <td>${reserva.fecha}</td>
         <td>${reserva.hora}</td>
+        <td>${reserva.duracionMin}</td>
       </tr>
     `;
     tabla.innerHTML += fila;
