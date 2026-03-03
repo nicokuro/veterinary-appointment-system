@@ -1,42 +1,59 @@
-/* Reset y base */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* AUXILIARES */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+:root{
+    --darkorange: #d45500;
+    --orange: #F86F03;
+    --yellow: #FFA41B;
+    --bone: #FFF6F4;
+    --blue: #4F7FFF;
+    --dark: #434343;
+    --gray: #59595950;
+    
+    --softshadow: 0px 2px 2px rgba(0, 0, 0, 0.13), 0px 4px 12px rgba(0, 0, 0, 0.06), 0px 0.500862px 1.50259px rgba(0, 0, 0, 0.03);
+    --moreshadowe: 0px 12px 26px rgba(0, 0, 0, 0.3), 0px 2.68036px 5.80744px rgba(0, 0, 0, 0.0417275), 0px 0.798012px 1.72903px rgba(0, 0, 0, 0.0282725);
+
+}
+/* -------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* GENERALES */
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+    font-size: 24px;
+    color: var(--dark);
     scroll-behavior: smooth;
+    transition: all 0.3s;
 }
 
-.logo-huellas {
-    height: 60px;
-}
+h1{font-family: "Poppins", sans-serif;
+  font-weight: 800;
+    font-size: 80px;}
 
-/* Ocultar mobile menu y botón reserva por defecto */
+h2{font-family: "Poppins", sans-serif;
+  font-weight: 700;
+    font-size: 3rem;
+margin-bottom: 2rem;
+color: var(--orange);}
+
+h3, header nav a, header button{  font-family: "Inter", sans-serif;
+  font-weight: 500;
+font-size: 24px;
+}
+/* -------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* HEADER */
+/* Menu Mobile en DK */
 .mobile-menu,
-#btn-reserva-mobile {
+#btn-reserva-mobile, .hamburger {
     display: none;
-}
-
-
-/* BASE - Ocultar elementos mobile por defecto */
-.hamburger {
-    display: none;
-}
-
-
-/* BASE - Estilos para nav-desktop */
-.nav-desktop {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 2rem;
-    flex: 1;
 }
 
 .hamburger.active span:nth-child(1) {
@@ -51,52 +68,56 @@ body {
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
-
-/* Fix header flex */
+/* Visble */
 header {
-    background: #F86F03;
+    background: var(--orange);
     padding: 1rem 8%;
     position: sticky;
     top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 10px rgba(248, 111, 3, 0.3);
+    z-index: 999;
+    box-shadow: var(--softshadow);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* ← CAMBIÉ align-content por align-items */
+}
+
+.logo-huellas {
+    height: 80px;
+}
+
+header .nav-desktop {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     gap: 2rem;
+    flex: 1;
 }
 
-
-nav a {
-    color: white;
+header nav a {
+    color: var(--bone);
     text-decoration: none;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background 0.3s;
+    margin: 0.5rem 1rem;
+    padding-bottom: 3px;
 }
 
-nav a:hover {
-    background: rgba(255, 255, 255, 0.1);
+header nav a:hover {
+    padding-bottom: 0;
+    border-bottom: var(--bone) 3px solid;
 }
 
 #btn-reserva {
-    background: #4F7FFF;
-    color: white;
+    background: var(--blue);
+    color: var(--bone);
     padding: 1rem 2rem;
     border: none;
     border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
 }
 
 #btn-reserva:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(79, 127, 255, 0.4);
+    box-shadow: var(--softshadow);
+    cursor: pointer;
 }
+/* -------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* HERO */
 #hero {
@@ -117,11 +138,8 @@ nav a:hover {
 }
 
 .hero-content h1 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 800;
-    font-size: 5rem;
+    color: var(--orange);
     line-height: 1.15;
-    color: #F86F03;
     margin-bottom: 1rem;
 }
 
@@ -129,12 +147,12 @@ nav a:hover {
     font-family: 'Inter', sans-serif;
     font-size: 2.2rem;
     margin-bottom: 3rem;
-    color: #434343;
+    color: var(--dark);
 }
 
 .btn-orange {
-    background: #F86F03;
-    color: white;
+    background: var(--orange);
+    color: var(--bone);
     padding: 1.5rem 3rem;
     border: none;
     border-radius: 50px;
@@ -142,45 +160,48 @@ nav a:hover {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 0 10px 20px rgba(248, 111, 3, 0.3);
+    box-shadow: var(--softshadow);
 }
 
 .btn-orange:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(248, 111, 3, 0.4);
+    box-shadow: var(--moreshadowe);
 }
+/* -------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* SERVICIOS */
 #servicios {
-    padding: 5rem 8%;
-    background: white;
+    padding: 2rem 8%;
+    background-color: var(--bone);
     text-align: center;
 }
 
-#servicios h2 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 4rem;
-    color: #F86F03;
-    margin-bottom: 3rem;
-}
-
 .servicios-content {
+    background-color: white;
+    box-shadow: var(--moreshadowe);
+    border-radius: 20px;
+    padding: 1rem;
     display: flex;
-    gap: 2rem;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     max-width: 1600px;
     margin: 0 auto;
 }
 
+.servicios-content .line{
+    background-color: var(--gray);
+    width: 1px;
+    height: 200px;
+    margin: 0 1.5rem;
+}
+
 .servicio-card {
     flex: 1;
-    max-width: 350px;
+    max-width: 300px;
 }
 
 .fig-galeria {
     position: relative;
-    height: 250px;
     overflow: hidden;
     border-radius: 20px;
     cursor: pointer;
@@ -198,7 +219,7 @@ nav a:hover {
     bottom: -100%;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(248, 111, 3, 0.95));
+    background: linear-gradient(transparent, rgb(63, 120, 233));
     color: white;
     padding: 2rem 1.5rem 1.5rem;
     transform: translateY(100%);
@@ -211,28 +232,21 @@ nav a:hover {
 }
 
 .hover-content h3 {
-    font-family: 'Poppins', sans-serif;
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
 }
 
 .hover-content p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
+/* -------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* GALERIA */
 #galeria {
-    padding: 5rem 8%;
+    padding: 2rem 8%;
     text-align: center;
-    background: #f8f9fa;
-}
-
-#galeria h2 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 4rem;
-    color: #F86F03;
-    margin-bottom: 3rem;
+    background: var(--bone);
 }
 
 .galeria-content {
@@ -249,37 +263,37 @@ nav a:hover {
     border-radius: 20px;
     transition: transform 0.3s ease;
     cursor: pointer;
+    box-shadow: var(--softshadow);
 }
 
 .galeria-content img:hover {
     transform: scale(1.05);
 }
+/* -------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* CONTACTO */
 #contacto {
     padding: 5rem 8%;
-    background: white;
+    background: var(--yellow);
+    color: var(--bone);
 }
 
 #contacto h2 {
     font-family: 'Poppins', sans-serif;
     font-size: 3rem;
-    color: #F86F03;
-    text-align: center;
+    color: var(--darkorange);
+    /* text-align: center; */
     margin-bottom: 3rem;
 }
 
 .contacto-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
 }
 
 .contacto-info h3 {
     font-size: 1.8rem;
-    color: #F86F03;
+    color: var(--darkorange);
     margin-bottom: 1.5rem;
 }
 
@@ -289,16 +303,21 @@ nav a:hover {
     line-height: 1.6;
 }
 
+.contacto-mapa {
+    width: 50%;
+}
 .contacto-mapa iframe {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
+/* -------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* FOOTER */
 footer {
-    background: #333;
-    color: white;
+    background: var(--darkorange);
+    color: var(--bone);
     padding: 2rem 8%;
+    font-size: 1.1rem;
 }
 
 .footer-content {
@@ -307,25 +326,36 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 2rem;
+}
+
+.trestrestres{
+    width: calc(100%/3);
 }
 
 .footer-links a {
-    color: white;
+    color: var(--bone);
     text-decoration: none;
-    margin-left: 1rem;
     transition: color 0.3s;
 }
 
 .footer-links a:hover {
-    color: #F86F03;
+    color: var(--orange);
+}
+
+.logo-huellas-ft{
+    text-align: center;
+}
+
+.rrss-ft{
+    display: flex;
+    gap: 1rem;
 }
 
 .footer-social {
     display: flex;
-    gap: 5px;
     align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
 }
 
 .footer-social img {
@@ -342,19 +372,24 @@ footer {
     margin-bottom: 1.5rem;
 }
 
+.form-group h2{
+    font-size: 1.1rem;
+}
+
 label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
-    color: #2c5530;
+    color: var(--dark);
 }
 
 input,
 select {
+    color: var(--dark);
     width: 100%;
     padding: 12px 15px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
+    border: 2px solid var(--gray);
+    border-radius: 50px;
     font-size: 16px;
     transition: border-color 0.3s;
 }
@@ -362,26 +397,45 @@ select {
 input:focus,
 select:focus {
     outline: none;
-    border-color: #F86F03;
+    border-color: var(--orange);
 }
 
-button[type="submit"] {
+button[type="submit"], #btn-login-admin {
     background: linear-gradient(135deg, #F86F03, #e55a00);
     color: white;
     padding: 15px;
     width: 100%;
     border: none;
-    border-radius: 8px;
+    border-radius: 50px;
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
 }
 
-button[type="submit"]:hover {
+button[type="submit"]:hover, #btn-login-admin:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(248, 111, 3, 0.4);
+    box-shadow: var(--softshadow);
 }
+
+.btn-admin, #btn-volver-reserva{
+    text-decoration: underline;
+    text-align: center !important;
+    font-size: 1.2rem;
+    color: var(--blue);
+    background-color: transparent;
+    width: 100%;
+    margin-top: 15px;
+    background-color: none;
+    border: none;
+}
+
+.btn-admin:hover, #btn-volver-reserva:hover{
+    cursor: pointer;
+    color: var(--yellow);
+    transition: all ease 0.2s;
+}
+/* -------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* MODAL */
 .modal {
@@ -451,12 +505,17 @@ button[type="submit"]:hover {
     text-align: center;
 }
 
-#reservas h2 {
+#modal-reserva h2 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 3rem;
-    color: #F86F03;
+    font-size: 2rem;
+    color: var(--orange);
     margin-bottom: 2rem;
+    text-align: center;
+}
+
+.btn-admin{
+    text-align: center;
 }
 
 .tabla-container {
@@ -508,10 +567,15 @@ tbody tr:hover {
     box-shadow: 0 10px 20px rgba(79, 127, 255, 0.4);
 }
 
-/* ===== RESPONSIVE MOBILE (768px ↓) ===== */
+/* ===== MOBILE (768px ↓) ===== */
 @media (max-width: 768px) {
 
     /* HEADER MOBILE */
+    /* Ocultos */
+    .nav-desktop {
+        display: none !important;
+    }
+
     header {
         padding: 1rem 5%;
         flex-wrap: wrap;
@@ -519,11 +583,6 @@ tbody tr:hover {
 
     .logo-huellas {
         height: 50px;
-    }
-
-    /* Ocultar nav desktop */
-    .nav-desktop {
-        display: none;
     }
 
     /* Hamburguesa */
@@ -555,18 +614,15 @@ tbody tr:hover {
         left: -100%;
         width: 280px;
         height: 100vh;
-        background: #F86F03;
+        background: var(--yellow);
         flex-direction: column;
-        justify-content: center;
         align-items: center;
         gap: 2rem;
         padding: 2rem;
         transition: left 0.3s ease;
         z-index: 100;
-        box-shadow: -5px 0 20px rgba(248, 111, 3, 0.3);
+        box-shadow: var(--softshadow);
     }
-
-
 
     .mobile-menu.active {
         left: 0;
@@ -590,8 +646,8 @@ tbody tr:hover {
     }
 
     #btn-reserva-mobile {
-        background: #4F7FFF;
-        color: white;
+        background: var(--blue);
+        color: var(--bone);
         padding: 1.2rem 2.5rem;
         border: none;
         border-radius: 50px;
@@ -625,10 +681,16 @@ tbody tr:hover {
 
     /* HERO MOBILE */
     #hero {
-        height: 70vh;
-        padding-left: 5%;
-        padding-right: 5%;
-        justify-content: center;
+        height: 100vh;
+        padding: 0 5rem;
+        background-position-x: right;
+    }
+
+    .hero-content{
+        height: 40vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         text-align: center;
     }
 
@@ -643,6 +705,7 @@ tbody tr:hover {
     }
 
     .btn-orange {
+        background-color: var(--orange);
         padding: 1rem 2rem;
         font-size: 1.2rem;
     }
@@ -663,6 +726,10 @@ tbody tr:hover {
         gap: 1.5rem;
     }
 
+    .servicios-content .line{
+width: 350px;
+height: 1.5px;
+    }
     .servicio-card {
         max-width: 300px;
     }
@@ -678,13 +745,12 @@ tbody tr:hover {
     }
 
     .galeria-content {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 2rem;
     }
 
     .galeria-content img {
         width: 100%;
-        height: 250px;
+        height: 450px;
     }
 
     /* CONTACTO MOBILE - COLUMNA */
@@ -694,26 +760,27 @@ tbody tr:hover {
 
     #contacto h2 {
         font-size: 2.2rem;
+        text-align: center;
     }
 
     .contacto-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+    flex-direction: column;
+    }
+
+    .contacto-mapa{
+        width: 100%;
     }
 
     /* FOOTER MOBILE - COLUMNA */
     .footer-content {
-        flex-direction: column;
+        flex-direction: column-reverse;
         text-align: center;
-        gap: 1.5rem;
-    }
-
-    .footer-links {
-        order: -1;
-    }
-
-    .footer-social {
         gap: 1rem;
+    }
+
+    .trestrestres{
+        width: 100%;
+        justify-content: center;
     }
 
     .footer-social img {
